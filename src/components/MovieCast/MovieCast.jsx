@@ -6,7 +6,7 @@ import { useParams } from "react-router-dom";
 
 export default function MovieCast() {
     const { movieId } = useParams();
-    const [moviesCast, setMoviesCast] = useState(null);
+    const [moviesCast, setMoviesCast] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(false);
 
@@ -31,7 +31,7 @@ export default function MovieCast() {
             {isLoading && <p>Loading...</p>}
             {error && <p>Please try again later...</p>}
         <ul className={css.castList}>
-            {moviesCast!==null && moviesCast.map(({ credit_id, profile_path, original_name, character }) => {
+            {moviesCast.length > 0 && moviesCast.map(({ credit_id, profile_path, original_name, character }) => {
                 return (
                     <li key={credit_id}>
                         <img className={css.img} src={`https://image.tmdb.org/t/p/w200${profile_path}`} alt={original_name} />
