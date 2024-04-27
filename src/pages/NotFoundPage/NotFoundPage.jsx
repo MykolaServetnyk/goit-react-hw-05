@@ -7,7 +7,7 @@ export default function NotFoundPage() {
         <div>
       <p>Opps! Page not found! Sorry!</p>
       <p>
-        Please visit out <Link to="/">home page</Link>
+        Please visit our <Link to="/">home page</Link>
       </p>
     </div>
     )

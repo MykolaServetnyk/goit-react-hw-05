@@ -9,7 +9,7 @@ export default function HomePage() {
     const [error, setError] = useState(false);
   
     useEffect(() => {
-      async function fetchTrandingMovies() {
+      async function fetchTrendingMovies() {
         try {
           setIsLoading(true);
           const data = await getTrendingMovies();
@@ -21,7 +21,7 @@ export default function HomePage() {
         }
       }
   
-      fetchTrandingMovies();
+      fetchTrendingMovies();
     }, []);
     return <div>
       <p>Trending today</p>

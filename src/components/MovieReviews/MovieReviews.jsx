@@ -28,8 +28,6 @@ export default function MovieReviews() {
         fetchMovieReviews();
     }, [movieId]);
 
-    console.log(moviesReviews);
-    
     return (
         <div>
             {isLoading && <p>Loading...</p>}
