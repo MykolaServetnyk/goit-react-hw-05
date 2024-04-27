@@ -60,10 +60,10 @@ export default function MovieDetailsPage() {
         )}
           <ul className={css.addition}>
             <li>
-              <Link to="cast"><RiMovie2Line /> Cast</Link>
+              <Link to="/cast"><RiMovie2Line /> Cast</Link>
             </li>
             <li>
-              <Link to="reviews"><FaComment /> Reviews</Link>
+              <Link to="/reviews"><FaComment /> Reviews</Link>
             </li>
           </ul>
         <Suspense fallback={<b>Loading nested route...</b>}>
