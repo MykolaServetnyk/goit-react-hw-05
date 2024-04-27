@@ -1,4 +1,5 @@
 import css from './MovieCast.module.css';
+import { RiUserStarFill } from "react-icons/ri";
 import { getMoviesCast } from '../../films-api';
 import { useEffect, useState } from 'react';
 import { useParams } from "react-router-dom";
@@ -25,17 +26,17 @@ export default function MovieCast() {
         fetchMovieCast();
     }, [movieId]);
 
-    console.log(moviesCast);
     return (
         <div>
             {isLoading && <p>Loading...</p>}
-        <ul>
+            {error && <p>Please try again later...</p>}
+        <ul className={css.castList}>
             {moviesCast!==null && moviesCast.map(({ credit_id, profile_path, original_name, character }) => {
                 return (
                     <li key={credit_id}>
-                        <img src={`https://image.tmdb.org/t/p/w200${profile_path}`} alt={original_name} />
-                        <h2>{original_name}</h2>
-                        <p>{character}</p>
+                        <img className={css.img} src={`https://image.tmdb.org/t/p/w200${profile_path}`} alt={original_name} />
+                        <h2 className={css.castTitle}><RiUserStarFill /> {original_name}</h2>
+                        <p className={css.castChar}>"{character}"</p>
                     </li>
                 );
             })}

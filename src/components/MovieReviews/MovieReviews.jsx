@@ -8,7 +8,7 @@ import { useParams } from "react-router-dom";
 export default function MovieReviews() {
 
     const { movieId } = useParams();
-    const [moviesReviews, setMoviesReviews] = useState(null);
+    const [moviesReviews, setMoviesReviews] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(false);
 
@@ -28,28 +28,23 @@ export default function MovieReviews() {
         fetchMovieReviews();
     }, [movieId]);
 
-    if (isLoading) {
-        return <div>Loading...</div>;
-    }
-
-    if (error) {
-        return <div>Error occurred while fetching data.</div>;
-    }
     console.log(moviesReviews);
     
     return (
         <div>
-            <ul>
-        {moviesReviews !== null && moviesReviews.map(({id, author, content}) => {
-            return (
-                <li key={id}>
-                    <p><FaUser />Author:{author}</p>
-                    <p>Content:{ content}</p>
-                </li>
-            )
-        })}
+            {isLoading && <p>Loading...</p>}
+            {error && <p>Please try again later...</p>}
+            <ul className={css.reviewsList}>
+                {moviesReviews.length > 0 ? moviesReviews.map(({id, author, content}) => {
+                    return (
+                        <li className={css.reviewItem} key={id}>
+                            <p><FaUser /> {author}</p>
+                            <p>Content:{ content}</p>
+                        </li>
+                    )
+                }):<p>There are still no reviews for this movie</p>}
 
-    </ul>
+            </ul>
         </div>)
    
 }

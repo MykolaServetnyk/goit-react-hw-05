@@ -23,9 +23,6 @@ export default function HomePage() {
   
       fetchTrandingMovies();
     }, []);
-  
-    console.log(trandingMovies);
-
     return <div>
       <p>Trending today</p>
       { isLoading && <p>Loading...</p>}
